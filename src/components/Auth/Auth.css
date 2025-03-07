@@ -1,0 +1,6 @@
+.btn_cerrar{
+    border: 0;
+    background-color: var(--dark-bg-solid);
+    font-family: inherit;
+    color: inherit;
+}
