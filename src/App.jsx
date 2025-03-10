@@ -6,16 +6,15 @@ import { login } from './redux/slices/authSlice.js';
 import { fetchLicences } from './redux/slices/licenceSlice.js';
 import { fetchProducts } from './redux/slices/productSlice.js';
 import { fetchCategories } from './redux/slices/categorySlice.js';
-import { AppRoutes } from './routes/AppRoutes.jsx';
-import { Header } from './components/Header/Header.jsx';
-import { Footer } from './components/Footer/Footer.jsx';
+import { Router } from './routes/Router.jsx';
+import { Header, Footer } from './components/index.js';
 
 export function App() {
     const dispatch = useDispatch();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    const { data: categories, isLoading: categoriesLoading } = useSelector((state) => state.categories);
-    const { data: licences, isLoading: licencesLoading } = useSelector(state => state.licences);
-    const { data: products, isLoading: productsLoading } = useSelector(state => state.products);
+    const { data: categories } = useSelector((state) => state.categories);
+    const { data: licences } = useSelector(state => state.licences);
+    const { data: products } = useSelector(state => state.products);
     
     useEffect(() => {
         const token = localStorage.getItem('access_token');
@@ -32,7 +31,7 @@ export function App() {
         <>
             <BrowserRouter>
                 <Header isAuthenticated={isAuthenticated} categories={categories}/>
-                <AppRoutes licences={licences} products={products}/>
+                <Router licences={licences} products={products}/>
                 <Footer isAuthenticated={isAuthenticated}/>                
             </BrowserRouter>
         </>
