@@ -1,16 +1,11 @@
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-
-import { DataContext } from './../contexts/DataContexts.jsx';
-import { Icon } from './../components/Icon.jsx';
+import { Icon } from './../../components/index.js';
 
 import './Detail.css';
 
-export const Detail = () => {
+export const Detail = ({products}) => {
     const { id } = useParams();
-    const { products } = useContext(DataContext);
-
     const product = products.find(product => product.id === parseInt(id));
 
     if (!product) {

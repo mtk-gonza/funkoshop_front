@@ -5,12 +5,11 @@ import { Card, Icon } from './../../components/index.js';
 import { news } from './../../utils/news.js';
 import './Shop.css';
 
-export const Shop = () => {
+export const Shop = ({products}) => {
     const { category, licence_id } = useParams();
-    const { products } = useContext(DataContext);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(6);
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(products);
     const [filters, setFilters] = useState({
         news: false,
         offers: false,
@@ -37,14 +36,13 @@ export const Shop = () => {
         }
         if (filters.favs) {
             filtered = filtered.filter(product => product);
-        }
-        console.log(filtered);
+        }        
         setFilteredProducts(filtered)
     }
 
     useEffect(() => {
         setProducts()
-    }, [category, products, filters])
+    }, [category, filters, licence_id])
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -157,7 +155,7 @@ export const Shop = () => {
                                 className={`pagination__link ${currentPage === 1 ? 'disabled' : 'pagination__link--selected'}`}
                                 onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 1 : 1)}
                             >
-                                Anterior
+                                <Icon css='icon' icon={faChevronLeft} /> 
                             </Link>
                             {pageNumbers.map((number) => (
                                 <Link
@@ -174,7 +172,7 @@ export const Shop = () => {
                                 className={`pagination__link ${currentPage === pageNumbers.length ? 'disabled' : 'pagination__link--selected'}`}
                                 onClick={() => setCurrentPage(currentPage < pageNumbers.length ? currentPage + 1 : pageNumbers.length)}
                             >
-                                Siguiente
+                                <Icon css='icon' icon={faChevronRight} />                                
                             </Link>
                         </>
                     }

@@ -1,28 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { faBars, faChevronDown, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { fetchCategories } from './../../redux/slices/categorySlice.js';
 import { Icon, Auth } from './../index.js'
 import './Header.css';
 
-export const Header = ({ isAuthenticated }) => {
-    const dispatch = useDispatch();
-    const { data: categories, isLoading: categoriesLoading } = useSelector((state) => state.categories);
-    const [isOpen, setIsOpen] = useState(false);    
-
+export const Header = ({ isAuthenticated, categories }) => {
+    const [isOpen, setIsOpen] = useState(false);  
     const toggleMenu = () => {
         console.log('click');
         setIsOpen(!isOpen);
     };
-
-    useEffect(() =>{
-        dispatch(fetchCategories());
-    }, [dispatch])
-
-    if (categoriesLoading) {
-        return <div>Cargando...</div>;
-    }
 
     return (
         <header className="page-header">

@@ -1,25 +1,18 @@
 import { useParams, Link } from 'react-router-dom';
-
-import { EditCategory } from './../components/edit/EditCategory.jsx';
-import { EditLicence } from './../components/edit/EditLicence.jsx';
-import { EditProduct } from './../components/edit/EditProduct.jsx';
-import { EditRole } from './../components/edit/EditRole.jsx';
-import { EditUser } from './../components/edit/EditUser.jsx';
-
 export const Edit = () => {
     const { table } = useParams();
     const Item = () => {
         switch (table) {
             case 'categories':
-                return <EditCategory/>;            
+                return <div>categories</div>         
             case 'licences':
-                return <EditLicence/>; 
+                return <div>licences</div>  
             case 'products':
-                return <EditProduct/>;
+                return <div>products</div>  
             case 'roles':
-                return <EditRole/>;
+                return <div>roles</div>  
             case 'users':
-                return <EditUser/>;
+                return <div>users</div>  
             default:
                 return <div className='container'>No se encontró un componente para {table}</div>;
         }

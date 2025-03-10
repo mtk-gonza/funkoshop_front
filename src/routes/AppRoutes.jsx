@@ -1,7 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home } from './../pages/Home/Home';
-import { Login } from './../pages/Login/Login';
-import { Dashboard } from './../pages/Dashboard/Dashboard';
+import { Admin, Contact, Create, Dashboard, Detail, Edit, Home, Login, Message, Register, Shop } from './../pages/index.js';
 import { ProtectedRoute } from './ProtectedRoute';
 
 export const AppRoutes = ({products, licences}) => {
@@ -9,6 +7,14 @@ export const AppRoutes = ({products, licences}) => {
 		<Routes>
 			<Route path='/' element={<Home products={products} licences={licences}/>} />
 			<Route path='/login' element={<Login />} />
+			<Route path='/register' element={<Register />} />
+			<Route path='/shop' element={<Shop products={products}/>} />
+			<Route path='/shop/:category/:licence_id?' element={<Shop products={products}/>} />
+			<Route path='/admin' element={<ProtectedRoute> <Admin/> </ProtectedRoute>} />
+			<Route path='/contact' element={<Contact />} />
+			<Route path='/Create' element={<ProtectedRoute> <Create/> </ProtectedRoute>} />
+			<Route path='/Detail' element={<Detail />} />
+			<Route path='/Edit'element={<ProtectedRoute> <Edit/> </ProtectedRoute>} />
 			<Route path='/dashboard' element={<ProtectedRoute> <Dashboard/> </ProtectedRoute>} />				
 			<Route path='*' element={<Navigate to='/login' replace />} />
 		</Routes>
