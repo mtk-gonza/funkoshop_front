@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { faSpinner, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { useCombinedContexts } from './../../hooks/useCombineContexs.js'
 import { Card, Icon } from './../../components/index.js';
 import { news } from './../../utils/news.js';
 import './Shop.css';
 
-export const Shop = ({products}) => {
+export const Shop = () => {
+    const { products } = useCombinedContexts()
     const { category, licence_id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(6);

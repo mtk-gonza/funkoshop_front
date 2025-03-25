@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { Category } from './../Category/Category.jsx';
 import './TabContainer.css';
 
-export const TabContainer = () => {
+export const TabContainer = ({categories}) => {
     const [activeTab, setActiveTab] = useState(0);
 
     const tabs = [
         {
             label: 'Categorias',
-            content: <Category></Category>,
+            content: <Category categories={categories}></Category>
         }
     ];
 

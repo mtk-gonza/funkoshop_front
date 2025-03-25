@@ -1,21 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchCategories } from './../../redux/slices/categorySlice.js';
+import { useCombinedContexts } from './../../hooks/useCombineContexs.js'
 import './Footer.css';
 
-export const Footer = ({isAuthenticated}) => { 
-    const dispatch = useDispatch();
-    const { data: categories, isLoading: categoriesLoading } = useSelector((state) => state.categories); 
-
-    useEffect(() =>{
-        dispatch(fetchCategories());
-    }, [dispatch])
-
-    if (categoriesLoading) {
-        return <div>Cargando...</div>;
-    }
-
+export const Footer = () => { 
+    const { isAuthenticated } = useCombinedContexts()
     return (
         <footer className="footer">
             <nav className="navbar container">

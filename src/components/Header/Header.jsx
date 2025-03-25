@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { faBars, faChevronDown, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { Icon, Auth } from './../index.js'
+import { useCombinedContexts } from './../../hooks/useCombineContexs.js'
+import { Icon, Auth } from './../index.js';
 import './Header.css';
 
-export const Header = ({ isAuthenticated, categories }) => {
+export const Header = () => {
+    const { isAuthenticated, categories } = useCombinedContexts();
     const [isOpen, setIsOpen] = useState(false);  
     const toggleMenu = () => {
         console.log('click');

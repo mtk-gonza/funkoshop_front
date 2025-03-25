@@ -1,7 +1,9 @@
+import { useCombinedContexts } from './../../hooks/useCombineContexs.js'
 import { Hero, Collection, Slider } from './../../components/index.js';
 import { news } from './../../utils/news.js';
 
-export const Home = ({products, licences}) => {
+export const Home = () => {
+    const { products, licences } = useCombinedContexts()
     const latestReleases = products?.filter(product => news(product.createdAt)) || [];
 
     return (

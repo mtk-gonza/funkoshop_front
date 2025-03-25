@@ -1,15 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { logout } from './../../redux/slices/authSlice';
 import { Button } from './../Button/Button';
+import { useCombinedContexts } from './../../hooks/useCombineContexs.js';
 import './Auth.css'
 
 export const Auth = () => {
-    const dispatch = useDispatch();
-    const handleLogout = () => {
-        localStorage.removeItem('access_token');
-        dispatch(logout());
-    };
+    const { logout } = useCombinedContexts()
+
     return (
-        <Button className='btn_cerrar navbar__link' onClick={handleLogout}>CERRAR SESIÓN</Button>
+        <Button className='btn_cerrar navbar__link' onClick={logout}>CERRAR SESIÓN</Button>
     );
 }

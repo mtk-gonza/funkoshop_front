@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { API_URL } from './../../services/apiClient.js';
-
 import './Collection.css'
 
-export const Collection = ({licence, nameClass}) => {           
+export const Collection = ({licence, nameClass}) => {         
     return (
         <section className="collection">
             <article className="collection__content">
@@ -12,7 +11,7 @@ export const Collection = ({licence, nameClass}) => {
                 <Link className="collection__link" to={`/shop/funkos/${licence.id}`} >VER COLECCIÓN</Link>                              
             </article>
             <picture className={nameClass}>
-                <img src={`${API_URL}/uploads/${licence.image}`} alt={`Figura de ${licence.name}`}/>
+                <img src={`${API_URL}/uploads/${licence.images[0].path}`} alt={`Figura de ${licence.name}`}/>
             </picture>
         </section>  
     )

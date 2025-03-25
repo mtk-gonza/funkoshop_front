@@ -1,24 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getCategories } from './../../services/categoryService.js';
 import { Table } from './../Table/Table.jsx';
 import './Category.css';
 
-export const Category = () => {
-    const [categories, setCategories] = useState([]);
-    const token = useSelector((state) => state.auth.token);
-
-    useEffect(() => {
-        const fetchInventory = async () => {
-            try {
-                const response = await getCategories(token);                
-                setCategories(response);
-            } catch (error) {
-                console.error('Error al cargar el inventario:', error);
-            }
-        };
-        fetchInventory();
-    }, [token]);
+export const Category = ({categories}) => {
 
     const columns = [
         { key: 'id', label: 'ID' },

@@ -4,7 +4,7 @@ export const Admin = () => {
     return (
         <main className='container'>            
             <div>Tabla ADmin</div>
-            <Link className='edit__back' to='/dashboard'>Volver</Link>
+            <Link className='edit__back' to='/'>Volver</Link>
         </main>
     )
 }

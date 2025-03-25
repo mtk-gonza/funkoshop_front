@@ -22,8 +22,7 @@ export const Slider = ({ products }) => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const visibleProducts = products.slice(startIndex, endIndex);
-
-    return (
+     return (
         <section className="container">
             <div className="slider">
                 <h2 className="slider__title">ÚLTIMOS LANZAMIENTOS</h2>
